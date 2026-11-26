@@ -10,6 +10,13 @@
 -->
 <html lang="ja">
 <head>
+  <!-- Google アナリティクス（アクセス分析）。Google から渡されたコードをそのまま貼っています -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TSQVK87G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>運営について／お問い合わせ｜ゆるくつながるプロジェクト</title>
@@ -164,6 +171,9 @@
         </h2>
         <!-- data/site-data.js の LINKS から、js/about.js が作ります -->
         <ul class="link-list" id="link-list"></ul>
+
+        <!-- アクセス分析についてのお知らせ -->
+        <p class="analytics-note fade-in">このサイトでは、アクセス状況を知るために Google アナリティクスを利用しています。個人を特定する情報は集めていません。</p>
       </div>
     </section>
 

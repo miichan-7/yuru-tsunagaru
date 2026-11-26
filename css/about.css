@@ -103,3 +103,13 @@
 .link-url { margin-top: auto; padding-top: 8px; font-size: .78rem; color: var(--latte); word-break: break-all; }
 
 @media (max-width: 640px) { .link-list { grid-template-columns: 1fr; } }
+
+/* アクセス分析のお知らせ（関連リンクの下に小さく） */
+.analytics-note {
+  margin-top: 40px;
+  text-align: center;
+  font-size: .8rem;
+  line-height: 1.8;
+  color: var(--text);
+  opacity: .75;
+}
