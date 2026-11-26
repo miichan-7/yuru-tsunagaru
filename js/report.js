@@ -102,6 +102,10 @@ if (typeof SURVEY !== "undefined") {
     satChart.innerHTML = barChartHtml(SURVEY.events, SURVEY.satisfaction, 5);
   }
 
+  // グラフの下の説明（シートから読みこんだときは、回にあわせて作りなおした文にする）
+  const itemsNote = document.getElementById("items-note");
+  if (itemsNote && SURVEY.note) itemsNote.textContent = SURVEY.note;
+
   // --- Q7 の4項目：項目ごとに小さなグラフを4つ並べる（4点満点） ---
   const itemCharts = document.getElementById("chart-items");
   if (itemCharts) {

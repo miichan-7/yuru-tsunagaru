@@ -25,6 +25,10 @@ if (opening) {
   opening.addEventListener("animationend", (e) => {
     if (e.animationName === "openingReveal") opening.remove();
   });
+  // シートの読みこみに時間がかかって、このJSが動く前にアニメーションが終わっていたときは、すぐ取りのぞく
+  if (opening.getAnimations && opening.getAnimations().some((a) => a.animationName === "openingReveal" && a.playState === "finished")) {
+    opening.remove();
+  }
   try { sessionStorage.setItem("openingShown", "1"); } catch (e) { /* 保存できなくても動くように */ }
 }
 

@@ -232,7 +232,9 @@
 
   <script src="data/schedule.js"></script>
   <script src="data/site-data.js"></script>
+  <script src="data/sheet-config.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/program.js"></script>
+  <!-- シートから参加者の声を読みこんでから、program.js を動かす -->
+  <script src="js/sheet-data.js" data-then="js/program.js"></script>
 </body>
 </html>

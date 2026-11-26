@@ -123,7 +123,7 @@
         <!-- Q7 の4項目のグラフ -->
         <div class="chart-box fade-in">
           <h3 class="chart-title">参加してどう変わった？</h3>
-          <p class="chart-note">4点満点・回ごとの平均（10/25・11/15 はモーニング＆コンポスト、11/20 はSNS活用講座）</p>
+          <p class="chart-note" id="items-note">4点満点・回ごとの平均（10/25・11/15 はモーニング＆コンポスト、11/20 はSNS活用講座、11/26 はくつろぎヨガ）</p>
           <div class="mini-charts" id="chart-items"></div>
 
           <!-- <details> … クリックで開け閉めできるHTMLの部品。グラフと同じ数字を表で見られます -->
@@ -193,7 +193,9 @@
 
   <script src="data/schedule.js"></script>
   <script src="data/report-data.js"></script>
+  <script src="data/sheet-config.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/report.js"></script>
+  <!-- シートから数字と声を読みこんでから、report.js を動かす -->
+  <script src="js/sheet-data.js" data-then="js/report.js"></script>
 </body>
 </html>
