@@ -1,0 +1,105 @@
+/* ==========================================================
+   css/about.css … 運営について／お問い合わせ ページだけの見た目
+   ========================================================== */
+
+/* ---------- ページ内のもくじ（活動報告と同じ形） ---------- */
+.page-toc { padding: 28px 0 0; }
+.page-toc ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.page-toc a {
+  display: inline-block;
+  padding: .45em 1.2em;
+  border: 2px solid var(--mint);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--text);
+  font-weight: 700;
+  font-size: .9rem;
+  text-decoration: none;
+  transition: background-color .2s, transform .2s;
+}
+.page-toc a:hover { background: var(--mint-pale); transform: translateY(-2px); }
+
+
+/* ---------- 運営について ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;   /* 左：ロゴ／右：文章 */
+  gap: 44px;
+  align-items: center;
+}
+.about-logo { width: 100%; }
+.about-text > p { margin: 0 0 1em; }
+
+.about-table { margin: 24px 0 0; background: var(--paper); border-radius: var(--radius); padding: 8px 24px; }
+.about-table div { display: flex; gap: 18px; padding: 12px 0; border-bottom: 1.5px solid var(--mint-pale); }
+.about-table div:last-child { border-bottom: none; }
+.about-table dt { flex-shrink: 0; width: 3.5em; font-weight: 700; color: var(--green); }
+.about-table dd { margin: 0; font-weight: 700; }
+
+@media (max-width: 800px) {
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-logo { max-width: 240px; margin-inline: auto; }
+  .about-table { padding: 4px 16px; }
+}
+
+
+/* ---------- お問い合わせ ---------- */
+.contact-section { background: var(--mint-pale); }
+.contact-lead { text-align: center; margin: -20px 0 28px; }
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+/* カード全体がリンク。ホバーで浮く（.card の動き） */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 28px 20px;
+  color: var(--text);
+  text-decoration: none;
+  text-align: center;
+}
+.contact-icon {
+  width: 56px; height: 56px;
+  margin-bottom: 6px;
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-icon .fill { fill: var(--green); stroke: none; }
+.contact-label { font-size: .88rem; font-weight: 700; color: var(--latte); }
+.contact-value { font-size: 1.15rem; font-weight: 900; color: var(--choco); word-break: break-all; }
+.contact-go { margin-top: 8px; font-size: .88rem; font-weight: 700; color: var(--green); }
+.contact-note { text-align: center; margin: 24px 0 0; font-size: .92rem; }
+
+@media (max-width: 640px) { .contact-cards { grid-template-columns: 1fr; } }
+
+
+/* ---------- 関連リンク ---------- */
+.link-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.link-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 24px;
+  color: var(--text);
+  text-decoration: none;
+}
+.link-name { font-size: 1.1rem; font-weight: 900; color: var(--choco); }
+.link-name::after { content: " ↗"; color: var(--green); }   /* 外のサイトへ、の印 */
+.link-url { margin-top: auto; padding-top: 8px; font-size: .78rem; color: var(--latte); word-break: break-all; }
+
+@media (max-width: 640px) { .link-list { grid-template-columns: 1fr; } }
