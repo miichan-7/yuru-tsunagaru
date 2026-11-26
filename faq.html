@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  faq.html … よくある質問
+  ----------------------------------------------------------
+  質問と答えは data/faq-data.js にあります。
+  js/faq.js がそれを読んで、クリックで開け閉めできる形にします。
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>よくある質問｜ゆるくつながるプロジェクト</title>
+  <meta name="description" content="ゆるくつながるプロジェクトのワークショップについて、申込・参加費・駐車場・バスなど、よくある質問をまとめています。">
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/faq.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<body class="page-faq">
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html">開催スケジュール</a></li>
+          <li><a href="index.html#programs">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="faq.html" aria-current="page">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ページの見出し帯 ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-en">FAQ</span>
+        <h1>よくある質問</h1>
+        <p>質問を押すと、答えが開きます</p>
+      </div>
+    </section>
+
+    <nav class="breadcrumb container" aria-label="現在地">
+      <ol>
+        <li><a href="index.html">トップ</a></li>
+        <li aria-current="page">よくある質問</li>
+      </ol>
+    </nav>
+
+    <section class="section faq-section">
+      <div class="container">
+        <!-- 質問の一覧がここに入ります -->
+        <div class="faq-wrap" id="faq-list"></div>
+
+        <!-- 解決しなかったとき -->
+        <div class="faq-contact fade-in">
+          <p>ほかにも気になることがあれば、気軽にお問い合わせください。</p>
+          <div class="faq-contact-buttons">
+            <a href="https://www.instagram.com/mogumzk/" class="btn btn-mint" target="_blank" rel="noopener">Instagram の DM で聞く</a>
+            <a href="mailto:u3123042@osaka-ohtani.ac.jp" class="btn btn-outline">メールで聞く</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <script src="data/faq-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/faq.js"></script>
+</body>
+</html>

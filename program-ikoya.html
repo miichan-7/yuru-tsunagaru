@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  program-ikoya.html … 企画④ 放課後いこーや
+  ----------------------------------------------------------
+  ほかの企画ページと同じ作りです（css/program.css・js/program.js）。
+  申込は不要なので、申込ボタンの代わりに案内の箱を置いています。
+  日程は data/schedule.js から自動で表示します。
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>放課後いこーや｜ゆるくつながるプロジェクト</title>
+  <meta name="description" content="放課後、くつろぎ自由研究室に集まって、宿題をしてもいい、おしゃべりしてもいい、子どもたちの居場所。宿題は大学生スタッフがサポートします。参加費無料・申込不要。">
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/program.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<!-- data-program="ikoya" … いこーやのページだという目印。--dot は企画の色（からし色） -->
+<body class="page-program" data-program="ikoya" style="--dot: #C28F31;">
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html">開催スケジュール</a></li>
+          <li><a href="index.html#programs" aria-current="page">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ページの見出し帯 ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-en">AFTER SCHOOL</span>
+        <h1>放課後いこーや</h1>
+        <p>放課後に集まれる、子どもたちの居場所</p>
+      </div>
+    </section>
+
+    <nav class="breadcrumb container" aria-label="現在地">
+      <ol>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="index.html#programs">4つの企画</a></li>
+        <li aria-current="page">放課後いこーや</li>
+      </ol>
+    </nav>
+
+    <!-- ===================== 紹介 ===================== -->
+    <section class="section program-intro">
+      <div class="container">
+        <div class="intro-grid">
+          <!-- いこーやの写真ができるまでは、くつろぎ自由研究室の中の写真を使っています -->
+          <img class="intro-photo fade-in" src="images/hero.jpg" alt="くつろぎ自由研究室の中のようす。本棚とテーブル、座布団が置かれた木の床の部屋" style="object-position: center 55%;">
+
+          <div class="intro-text fade-in">
+            <p class="intro-en">AFTER SCHOOL — 放課後の居場所</p>
+            <h2 class="intro-title"><span class="dot"></span>放課後いこーや</h2>
+            <dl class="intro-info">
+              <!-- 対象（学年など）が決まったら、ここに1行足してください。例：<div><dt>対象：</dt><dd>小学生</dd></div> -->
+              <div><dt>時間：</dt><dd>16:00〜18:00</dd></div>
+              <div><dt>参加費：</dt><dd><span class="fee-free">無料</span></dd></div>
+            </dl>
+            <p>放課後、くつろぎ自由研究室に集まって、宿題をしてもいい、おしゃべりしてもいい、子どもたちの居場所です。宿題は大学生スタッフがサポートします。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 過ごし方 ===================== -->
+    <section class="section ways-section">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">HOW TO SPEND</span>
+          <span class="title-deco">こんなふうに過ごせます</span>
+        </h2>
+        <ul class="ways">
+          <li class="way fade-in">
+            <!-- えんぴつとノートのアイコン（SVG） -->
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="12" y="10" width="32" height="44" rx="4"/>
+              <path d="M19 22h18M19 30h18M19 38h10"/>
+              <path d="M50 14l6 6-16 16-8 2 2-8z"/>
+            </svg>
+            <h3>宿題をする</h3>
+            <p>わからないところは、大学生スタッフがサポートします。</p>
+          </li>
+          <li class="way fade-in">
+            <!-- ふきだしのアイコン（SVG） -->
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M10 14h30a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6H24l-8 8v-8h-6a6 6 0 0 1-6-6V20a6 6 0 0 1 6-6z"/>
+              <path d="M50 26h4a6 6 0 0 1 6 6v10a6 6 0 0 1-6 6h-2v6l-7-6H36a6 6 0 0 1-5-3"/>
+            </svg>
+            <h3>おしゃべりする</h3>
+            <p>宿題をしなくても大丈夫。おしゃべりして過ごしてもいい場所です。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 日程 ===================== -->
+    <!-- js/program.js が #program-schedule の中に日程を作ります -->
+    <section class="section program-schedule-section" id="apply">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">SCHEDULE</span>
+          <span class="title-deco">日程</span>
+        </h2>
+        <div class="program-schedule" id="program-schedule"></div>
+
+        <!-- 申込不要の案内 -->
+        <div class="apply-box fade-in">
+          <p class="apply-box-title">申込は不要です</p>
+          <p class="apply-box-lead">当日、くつろぎ自由研究室に直接お越しください。</p>
+          <div class="apply-box-buttons">
+            <a href="access.html" class="btn btn-outline">アクセスを見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 参加者の声 ===================== -->
+    <!-- PROGRAM_VOICES.ikoya を書き足すと表示されます（いまは自動で隠れています） -->
+    <section class="section program-voices">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">VOICES</span>
+          <span class="title-deco">参加者の声</span>
+        </h2>
+        <ul class="program-voice-list" id="program-voices"></ul>
+      </div>
+    </section>
+
+    <!-- ===================== ほかの企画 ===================== -->
+    <section class="section other-programs">
+      <div class="container">
+        <p class="other-title">ほかの企画も見る</p>
+        <ul class="other-list">
+          <li><a href="program-morning.html" class="btn btn-outline" style="--dot: #503535;"><span class="dot"></span>モーニング＆コンポスト</a></li>
+          <li><a href="program-sns.html" class="btn btn-outline" style="--dot: #B27F4F;"><span class="dot"></span>SNS活用講座</a></li>
+          <li><a href="program-yoga.html" class="btn btn-outline" style="--dot: #609F85;"><span class="dot"></span>くつろぎヨガ教室</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <script src="data/schedule.js"></script>
+  <script src="data/site-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/program.js"></script>
+</body>
+</html>
