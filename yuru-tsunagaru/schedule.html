@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  schedule.html … 開催スケジュール（すべての予定の一覧）
+  ----------------------------------------------------------
+  予定の中身は、このHTMLには書いていません。
+  data/schedule.js のデータを、js/schedule.js が読み取って
+  #schedule-list の中に自動で並べています。
+  → 予定を追加・変更するときは data/schedule.js だけを直せばOK。
+
+  ヘッダーとフッターは、トップページ（index.html）と同じものを
+  コピーしています。メニューを変えるときは全ページ直してください。
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>開催スケジュール｜ゆるくつながるプロジェクト</title>
+  <meta name="description" content="ゆるくつながるプロジェクトのワークショップ開催スケジュール。日時・参加費・申込状況と申込フォームへのリンクをまとめています。">
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- 共通のCSS → このページだけのCSS -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/schedule.css">
+
+  <!-- 「JSが動いている」目印（フェードインのため）。オープニングはトップページだけなので不要 -->
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<body class="page-schedule">
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html" aria-current="page">開催スケジュール</a></li>
+          <li><a href="index.html#programs">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ページの見出し帯 ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-en">SCHEDULE</span>
+        <h1>開催スケジュール</h1>
+        <p>会場はすべて「くつろぎ自由研究室」です</p>
+      </div>
+    </section>
+
+    <!-- パンくずリスト：トップ › 開催スケジュール -->
+    <nav class="breadcrumb container" aria-label="現在地">
+      <ol>
+        <li><a href="index.html">トップ</a></li>
+        <li aria-current="page">開催スケジュール</li>
+      </ol>
+    </nav>
+
+    <section class="section schedule-section">
+      <div class="container">
+
+        <!-- ===================== カレンダー ===================== -->
+        <!-- 開催日を、企画の色の丸でぬって表示します（js/schedule.js が作ります）。
+             丸を押すと、下の一覧のその予定まで移動します -->
+        <div class="calendar-wrap fade-in">
+          <div class="calendar" id="calendar">
+            <div class="calendar-head">
+              <button type="button" class="calendar-nav" id="cal-prev" aria-label="前の月">‹</button>
+              <h2 class="calendar-title" id="cal-title" aria-live="polite"></h2>
+              <button type="button" class="calendar-nav" id="cal-next" aria-label="次の月">›</button>
+            </div>
+            <!-- 曜日と日付のマス。7列のグリッドです -->
+            <div class="calendar-grid calendar-week" aria-hidden="true">
+              <span class="sun">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="sat">土</span>
+            </div>
+            <div class="calendar-grid" id="cal-days"></div>
+          </div>
+
+          <!-- 色の見かた（凡例） -->
+          <div class="calendar-legend">
+            <p class="legend-title">色の見かた</p>
+            <ul>
+              <li style="--dot: #503535;"><span class="dot"></span>モーニング＆コンポスト</li>
+              <li style="--dot: #B27F4F;"><span class="dot"></span>SNS活用講座</li>
+              <li style="--dot: #609F85;"><span class="dot"></span>くつろぎヨガ教室</li>
+              <li style="--dot: #C28F31;"><span class="dot"></span>放課後いこーや</li>
+            </ul>
+            <p class="legend-note">
+              <span class="legend-today"></span>今日
+              <span class="legend-past"></span>開催済み
+            </p>
+            <p class="legend-note">色のついた日を押すと、その回のくわしい情報へ移動します。</p>
+          </div>
+        </div>
+
+        <!-- ===================== しぼりこみ ===================== -->
+        <!-- ボタンを押すと、その企画の予定だけを表示します（js/schedule.js）。
+             data-filter の値は、data/schedule.js の program と同じ名前です -->
+        <div class="filter fade-in">
+          <p class="filter-label">企画でしぼりこむ</p>
+          <div class="filter-buttons" role="group" aria-label="企画でしぼりこむ">
+            <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">すべて</button>
+            <button type="button" class="filter-btn" data-filter="morning" aria-pressed="false" style="--dot: #503535;"><span class="dot"></span>モーニング＆コンポスト</button>
+            <button type="button" class="filter-btn" data-filter="sns" aria-pressed="false" style="--dot: #B27F4F;"><span class="dot"></span>SNS活用講座</button>
+            <button type="button" class="filter-btn" data-filter="yoga" aria-pressed="false" style="--dot: #609F85;"><span class="dot"></span>ヨガ教室</button>
+            <button type="button" class="filter-btn" data-filter="ikoya" aria-pressed="false" style="--dot: #C28F31;"><span class="dot"></span>放課後いこーや</button>
+          </div>
+
+          <!-- チェックを入れると、終わった回も表示します -->
+          <label class="past-toggle">
+            <input type="checkbox" id="show-past">
+            <span>開催済みの回も表示する</span>
+          </label>
+        </div>
+
+        <!-- ===================== 予定の一覧 ===================== -->
+        <!-- 月ごとの見出しと予定のカードが、ここに自動で入ります -->
+        <div class="schedule-list" id="schedule-list" aria-live="polite"></div>
+
+        <!-- ===================== 申込について ===================== -->
+        <div class="apply-note fade-in">
+          <h2 class="apply-note-title">お申し込みについて</h2>
+          <ul>
+            <li>「申し込む」ボタンを押すと、Googleフォームが開きます。</li>
+            <li>モーニングとコンポスト講座は、それぞれ別のフォームです。両方に参加する方は、2つとも申し込んでください。</li>
+            <li>放課後いこーやは申込不要です。当日、直接お越しください。</li>
+            <li>満員の回は、申込を締め切っています。</li>
+          </ul>
+          <p class="apply-note-links">
+            <a href="first-time.html">初めての方へ</a>
+            <a href="access.html">アクセス</a>
+            <a href="faq.html">よくある質問</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <!-- データ → 共通の動き → このページの動き の順に読み込む -->
+  <script src="data/schedule.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/schedule.js"></script>
+</body>
+</html>

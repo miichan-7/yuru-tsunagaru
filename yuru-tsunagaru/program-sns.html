@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  program-sns.html … 企画② 地域コミュニティ×SNS活用講座（全5回）
+  ----------------------------------------------------------
+  モーニングのページと同じ作りです（css/program.css・js/program.js）。
+  「全5回のテーマ」のカードは、data/schedule.js の
+  title「SNS活用講座 第〇回「テーマ」」から自動で作っています。
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>地域コミュニティ×SNS活用講座（全5回）｜ゆるくつながるプロジェクト</title>
+  <meta name="description" content="地域のことを発信する、SNSの発信・投稿のコツを学ぶ全5回の講座。講師はen.undertemple代表のKENTOさん。ランチ＆フリータイムつき。">
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/program.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<!-- data-program="sns" … SNS講座のページだという目印。--dot は企画の色（カフェオレ） -->
+<body class="page-program" data-program="sns" style="--dot: #B27F4F;">
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html">開催スケジュール</a></li>
+          <li><a href="index.html#programs" aria-current="page">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ページの見出し帯 ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-en">SNS</span>
+        <h1>地域コミュニティ×<br>SNS活用講座</h1>
+        <p>〜 発信・投稿のコツ 〜（全5回）</p>
+      </div>
+    </section>
+
+    <nav class="breadcrumb container" aria-label="現在地">
+      <ol>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="index.html#programs">4つの企画</a></li>
+        <li aria-current="page">SNS活用講座</li>
+      </ol>
+    </nav>
+
+    <!-- ===================== 講座の紹介 ===================== -->
+    <section class="section program-intro">
+      <div class="container">
+        <div class="intro-grid">
+          <img class="intro-photo fade-in" src="images/sns-1.jpg" alt="くつろぎ自由研究室で、テーブルを囲んで話す参加者たち" style="object-position: center 68%;">
+
+          <div class="intro-text fade-in">
+            <p class="intro-en">SNS — SNS活用講座</p>
+            <h2 class="intro-title"><span class="dot"></span>地域コミュニティ×SNS活用</h2>
+            <dl class="intro-info">
+              <div><dt>講師：</dt><dd>KENTOさん（en.undertemple 代表）</dd></div>
+              <div><dt>日程：</dt><dd>各回 金曜日</dd></div>
+              <div><dt>時間：</dt><dd>10:00〜12:00 講座 ＋ 12:00〜14:00 ランチ＆フリータイム</dd></div>
+            </dl>
+            <p>地域のことを発信するための、SNSの発信・投稿のコツを学ぶ全5回の講座です。講座のあとは、ランチを食べながら参加者どうしでゆっくり話せるフリータイムがあります。</p>
+          </div>
+        </div>
+
+        <!-- 参加費などの要点 -->
+        <dl class="points fade-in">
+          <div class="point"><dt>参加費</dt><dd>3,000円<small>ランチ料込み・各回</small></dd></div>
+          <div class="point"><dt>定員</dt><dd>7名<small>要予約</small></dd></div>
+          <div class="point"><dt>会場</dt><dd>くつろぎ自由研究室<small>河南町寛弘寺422-7</small></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===================== 全5回のテーマ ===================== -->
+    <!-- js/program.js が #program-rounds の中にカードを作ります -->
+    <section class="section program-schedule-section" id="apply">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">THEMES</span>
+          <span class="title-deco">全5回のテーマ</span>
+        </h2>
+        <ol class="round-list" id="program-rounds"></ol>
+        <p class="date-list-more fade-in"><a href="schedule.html#sns">開催スケジュールで見る →</a></p>
+
+        <div class="apply-box fade-in">
+          <p class="apply-box-title">お申し込みはこちら</p>
+          <div class="apply-box-buttons">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhcQm7iXuMJ03rTwqu8o8GE9NXSLwJf_NSZ1oVUq9uSJTIJQ/viewform" class="btn btn-gold" target="_blank" rel="noopener">SNS活用講座に申し込む</a>
+          </div>
+          <p class="apply-box-note">Googleフォームが開きます。満員の回は申込を締め切っています。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 1日の流れ ===================== -->
+    <section class="section flow-section">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">FLOW</span>
+          <span class="title-deco">1日の流れ</span>
+        </h2>
+        <ol class="timeline fade-in">
+          <li>
+            <span class="time">10:00</span>
+            <div class="timeline-body">
+              <h3>講座</h3>
+              <p>KENTOさんから、その回のテーマについて教わります。</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">12:00</span>
+            <div class="timeline-body">
+              <h3>ランチ＆フリータイム</h3>
+              <p>ランチを食べながら、参加者どうしでゆっくり過ごします。</p>
+            </div>
+          </li>
+          <li>
+            <span class="time">14:00</span>
+            <div class="timeline-body">
+              <h3>おわり</h3>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== 参加者の声 ===================== -->
+    <!-- data/site-data.js の PROGRAM_VOICES.sns から表示 -->
+    <section class="section program-voices">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">VOICES</span>
+          <span class="title-deco">参加者の声</span>
+        </h2>
+        <ul class="program-voice-list" id="program-voices"></ul>
+      </div>
+    </section>
+
+    <!-- ===================== ほかの企画 ===================== -->
+    <section class="section other-programs">
+      <div class="container">
+        <p class="other-title">ほかの企画も見る</p>
+        <ul class="other-list">
+          <li><a href="program-morning.html" class="btn btn-outline" style="--dot: #503535;"><span class="dot"></span>モーニング＆コンポスト</a></li>
+          <li><a href="program-yoga.html" class="btn btn-outline" style="--dot: #609F85;"><span class="dot"></span>くつろぎヨガ教室</a></li>
+          <li><a href="program-ikoya.html" class="btn btn-outline" style="--dot: #C28F31;"><span class="dot"></span>放課後いこーや</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <script src="data/schedule.js"></script>
+  <script src="data/site-data.js"></script>
+  <script src="data/sheet-config.js"></script>
+  <script src="js/common.js"></script>
+  <!-- シートから参加者の声を読みこんでから、program.js を動かす -->
+  <script src="js/sheet-data.js" data-then="js/program.js"></script>
+</body>
+</html>

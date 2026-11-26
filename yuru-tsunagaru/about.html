@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  about.html … 運営について／お問い合わせ
+  ----------------------------------------------------------
+  1. 運営について（大阪大谷大学の学生企画プロジェクトであること）
+  2. お問い合わせ（Instagram とメール）
+  3. 関連リンク（data/site-data.js の LINKS から表示）
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>運営について／お問い合わせ｜ゆるくつながるプロジェクト</title>
+  <meta name="description" content="ゆるくつながるプロジェクトは、大阪大谷大学の学生企画プロジェクトです。お問い合わせは Instagram（@mogumzk）の DM かメールで。">
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/about.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<body class="page-about">
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html">開催スケジュール</a></li>
+          <li><a href="index.html#programs">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact" aria-current="page">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ページの見出し帯 ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-en">ABOUT &amp; CONTACT</span>
+        <h1>運営について／お問い合わせ</h1>
+      </div>
+    </section>
+
+    <nav class="breadcrumb container" aria-label="現在地">
+      <ol>
+        <li><a href="index.html">トップ</a></li>
+        <li aria-current="page">運営について／お問い合わせ</li>
+      </ol>
+    </nav>
+
+    <!-- ページ内のもくじ -->
+    <nav class="page-toc container" aria-label="このページのもくじ">
+      <ul>
+        <li><a href="#about">運営について</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#links">関連リンク</a></li>
+      </ul>
+    </nav>
+
+    <!-- ===================== 運営について ===================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">ABOUT</span>
+          <span class="title-deco">運営について</span>
+        </h2>
+
+        <div class="about-grid">
+          <img class="about-logo fade-in" src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="900" height="786" loading="lazy">
+
+          <div class="about-text fade-in">
+            <p>ゆるくつながるプロジェクトは、大阪大谷大学の学生が、河南町・寛弘寺の「くつろぎ自由研究室」で行っている居場所づくりのプロジェクトです。</p>
+            <p>この企画は、大阪大谷大学の学生の研究プロジェクトの一環です。ワークショップの当日は、研究のためアンケートへのご協力をお願いしています。</p>
+
+            <!-- 概要の表。<dl> は「項目名と中身」の組み合わせを並べるタグです -->
+            <dl class="about-table">
+              <div><dt>名前</dt><dd>ゆるくつながるプロジェクト</dd></div>
+              <div><dt>運営</dt><dd>大阪大谷大学 学生企画</dd></div>
+              <div><dt>会場</dt><dd>くつろぎ自由研究室<br>大阪府南河内郡河南町寛弘寺422-7</dd></div>
+              <div><dt>企画</dt><dd>
+                <a href="program-morning.html">生わさびご飯モーニング＆はじめてのコンポスト講座</a><br>
+                <a href="program-sns.html">地域コミュニティ×SNS活用講座</a><br>
+                <a href="program-yoga.html">くつろぎヨガ教室</a><br>
+                <a href="program-ikoya.html">放課後いこーや</a>
+              </dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== お問い合わせ ===================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">CONTACT</span>
+          <span class="title-deco">お問い合わせ</span>
+        </h2>
+        <p class="contact-lead fade-in">ワークショップに関するお問い合わせは、こちらからお気軽にどうぞ。</p>
+
+        <div class="contact-cards">
+          <!-- Instagram -->
+          <a class="contact-card card fade-in" href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">
+            <!-- カメラのアイコン（Instagramのロゴそのものは使わず、線で描いたカメラ） -->
+            <svg class="contact-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="10" y="10" width="44" height="44" rx="13"/><circle cx="32" cy="32" r="10"/><circle cx="45" cy="19" r="2.5" class="fill"/>
+            </svg>
+            <span class="contact-label">Instagram の DM</span>
+            <span class="contact-value">@mogumzk</span>
+            <span class="contact-go">Instagram を開く →</span>
+          </a>
+
+          <!-- メール。mailto: を押すと、メールアプリが開きます -->
+          <a class="contact-card card fade-in" href="mailto:u3123042@osaka-ohtani.ac.jp">
+            <svg class="contact-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="8" y="14" width="48" height="36" rx="6"/><path d="M10 18l22 16 22-16"/>
+            </svg>
+            <span class="contact-label">メール</span>
+            <span class="contact-value">u3123042@osaka-ohtani.ac.jp</span>
+            <span class="contact-go">メールを送る →</span>
+          </a>
+        </div>
+
+        <p class="contact-note fade-in">よくある質問もあわせてご覧ください。 <a href="faq.html">よくある質問 →</a></p>
+      </div>
+    </section>
+
+    <!-- ===================== 関連リンク ===================== -->
+    <section class="section" id="links">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">LINKS</span>
+          <span class="title-deco">関連リンク</span>
+        </h2>
+        <!-- data/site-data.js の LINKS から、js/about.js が作ります -->
+        <ul class="link-list" id="link-list"></ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html" aria-current="page">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <script src="data/site-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>

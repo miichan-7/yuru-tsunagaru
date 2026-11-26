@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  access.html … アクセス
+  ----------------------------------------------------------
+  1. 地図と住所（Googleマップの埋め込み）
+  2. バスでお越しの方（おすすめの便は data/access-data.js から表示）
+  3. お車でお越しの方
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>アクセス｜ゆるくつながるプロジェクト</title>
+  <meta name="description" content="会場「くつろぎ自由研究室」（大阪府南河内郡河南町寛弘寺422-7）への行き方。近鉄長野線 富田林駅からバスで「寛弘寺」下車すぐ。">
+  <link rel="icon" href="images/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/access.css">
+
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+
+<body class="page-access">
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html">開催スケジュール</a></li>
+          <li><a href="index.html#programs">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html" aria-current="page">アクセス</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ページの見出し帯 ===================== -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-en">ACCESS</span>
+        <h1>アクセス</h1>
+        <p>会場は、河南町・寛弘寺の「くつろぎ自由研究室」です</p>
+      </div>
+    </section>
+
+    <nav class="breadcrumb container" aria-label="現在地">
+      <ol>
+        <li><a href="index.html">トップ</a></li>
+        <li aria-current="page">アクセス</li>
+      </ol>
+    </nav>
+
+    <!-- ===================== 地図と住所 ===================== -->
+    <section class="section place-section">
+      <div class="container place-grid">
+        <div class="place-info fade-in">
+          <img class="place-photo" src="images/kutsurogi-exterior.jpg" alt="くつろぎ自由研究室の外観。角地に建つ古い薬局の建物で、窓に「くつろぎ自由研究室」の木の看板" loading="lazy">
+          <h2 class="place-name">くつろぎ自由研究室</h2>
+          <p class="place-address">大阪府南河内郡河南町寛弘寺422-7</p>
+          <a class="btn btn-outline btn-small" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%8D%97%E6%B2%B3%E5%86%85%E9%83%A1%E6%B2%B3%E5%8D%97%E7%94%BA%E5%AF%9B%E5%BC%98%E5%AF%BA422-7" target="_blank" rel="noopener">Googleマップで開く</a>
+        </div>
+
+        <!-- Googleマップの埋め込み。<iframe> は「ページの中に別のページを表示する」タグです。
+             住所を変えるときは、src の q= のあとの文字を書きかえます -->
+        <div class="map fade-in">
+          <iframe
+            src="https://www.google.com/maps?q=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%8D%97%E6%B2%B3%E5%86%85%E9%83%A1%E6%B2%B3%E5%8D%97%E7%94%BA%E5%AF%9B%E5%BC%98%E5%AF%BA422-7&output=embed&z=16"
+            title="くつろぎ自由研究室の地図"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== バスでお越しの方 ===================== -->
+    <section class="section bus-section">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">BY BUS</span>
+          <span class="title-deco">バスでお越しの方</span>
+        </h2>
+
+        <!-- 行き方を、駅 → バス停 → 会場 の順に -->
+        <ol class="route fade-in" id="route"></ol>
+
+        <!-- 企画ごとのおすすめの便 -->
+        <div class="bus-box fade-in">
+          <h3 class="bus-box-title">おすすめの便</h3>
+          <p class="bus-box-note">富田林駅前から乗って、開始の少し前に着く便です。</p>
+          <div class="table-scroll">
+            <table class="bus-table">
+              <thead>
+                <tr><th scope="col">企画</th><th scope="col">富田林駅前 発</th><th scope="col">寛弘寺 着</th></tr>
+              </thead>
+              <tbody id="bus-table-body"></tbody>
+            </table>
+          </div>
+          <p class="bus-caution" id="bus-caution"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== お車でお越しの方 ===================== -->
+    <section class="section car-section">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">BY CAR</span>
+          <span class="title-deco">お車でお越しの方</span>
+        </h2>
+        <div class="car-box fade-in">
+          <!-- 車のアイコン（SVG） -->
+          <svg class="car-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M10 38l5-14a6 6 0 0 1 6-4h22a6 6 0 0 1 6 4l5 14"/>
+            <rect x="6" y="36" width="52" height="14" rx="5"/>
+            <circle cx="18" cy="50" r="5"/><circle cx="46" cy="50" r="5"/>
+          </svg>
+          <div>
+            <p class="car-lead">会場の駐車場は2台分あります。</p>
+            <p>いっぱいの場合は、川沿いのスペースにとめてください。</p>
+            <!-- 場所がわかるリンク。URLの「?」から後ろ（アクセス解析用の文字）は外しています -->
+            <div class="car-links">
+              <a class="btn btn-outline btn-small" href="https://www.instagram.com/p/C9EjzO6JcYv/" target="_blank" rel="noopener">会場の駐車場の場所（Instagram）</a>
+              <a class="btn btn-outline btn-small" href="https://maps.app.goo.gl/AJ88gMKemS6oXnc76" target="_blank" rel="noopener">川沿いのスペース（Googleマップ）</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <script src="data/access-data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="data/schedule.js"></script>
+  <script src="js/access.js"></script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  index.html … トップページ
+  ----------------------------------------------------------
+  HTMLは「ページの骨組み（中身と順番）」を書くファイルです。
+  見た目（色・大きさ）は css/ フォルダ、
+  動き（アニメーション・表示の切りかえ）は js/ フォルダ、
+  よく変わる予定や数字は data/ フォルダに分けています。
+
+  デザインは、ワークショップのチラシ（Canva）に合わせています。
+  ・ヒーロー … チラシの「表面」（写真＋チョコ色＋縦書き）
+  ・開催予定 … チラシの「裏面」（左にスケジュール、右に企画の詳細）
+  ==========================================================
+-->
+<html lang="ja">
+<head>
+  <!-- 文字化けを防ぐための文字コードの指定 -->
+  <meta charset="UTF-8">
+  <!-- スマホで見たときに、画面幅に合わせて表示する指定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ゆるくつながるプロジェクト｜多世代がゆるくつながる居場所</title>
+  <meta name="description" content="大阪大谷大学の学生企画プロジェクト。大阪府河南町「くつろぎ自由研究室」で、多世代がゆるくつながる居場所づくりのワークショップを開催しています。">
+  <!-- ブラウザのタブに出る小さなアイコン -->
+  <link rel="icon" href="images/logo.png">
+
+  <!-- Google Fonts の読み込み（Zen Maru Gothic … 見出しも本文もこの丸ゴシック） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!-- 全ページ共通のCSS → このページだけのCSS の順に読み込む -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/top.css">
+
+  <!--
+    ページを描く前に実行する小さなJavaScript。
+    ・「JSが動いている」目印として <html> に js クラスをつける
+      （JSが動かない環境で、フェードイン前の要素が見えないまま…を防ぐため）
+    ・同じタブで2回目以降に開いたときは、オープニングを省略する
+  -->
+  <script>
+    document.documentElement.classList.add("js");
+    try {
+      if (sessionStorage.getItem("openingShown")) {
+        document.documentElement.classList.add("skip-opening");
+      }
+    } catch (e) { /* 保存機能が使えない環境では毎回オープニングを流す */ }
+  </script>
+</head>
+
+<body class="page-top">
+
+  <!-- ===================== オープニング =====================
+       ロゴが画面いっぱいにふわっと出て、約2秒でフェードアウト。
+       動きは top.css の @keyframes で作っています。 -->
+  <div class="opening" id="opening" aria-hidden="true">
+    <img class="opening-logo" src="images/logo.png" alt="">
+  </div>
+
+  <!-- ===================== ヘッダー（全ページ共通） ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- ロゴ。クリックでトップページへ戻る -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="ゆるくつながるプロジェクト in くつろぎ自由研究室" width="64" height="56">
+      </a>
+
+      <!-- スマホ用のハンバーガーボタン（3本線）。
+           aria-〇〇 は、読み上げソフトに状態を伝えるための属性です -->
+      <button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- メニュー。PCでは横並び、スマホでは右からスライドして出てきます -->
+      <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="index.html#about">プロジェクトについて</a></li>
+          <li><a href="schedule.html">開催スケジュール</a></li>
+          <li><a href="index.html#programs">4つの企画</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="report.html">活動報告</a></li>
+          <li><a href="first-time.html">初めての方へ</a></li>
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="about.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- スマホでメニューを開いたとき、後ろを暗くする幕 -->
+    <div class="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- ===================== ヒーロー =====================
+         画面いっぱいの写真だけを、シンプルに見せます。
+         写真は images/hero.jpg。変えたいときは同じ名前で上書きするだけでOK。 -->
+    <section class="hero">
+      <!-- 写真（ゆっくり少しずつ寄っていく動きをCSSでつけています） -->
+      <div class="hero-photo" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <!-- ロゴ（トップページでは、ヘッダーのロゴを消して、ここに出しています） -->
+        <img class="hero-logo" src="images/logo.png" alt="" width="900" height="786">
+        <h1 class="hero-title">
+          <span class="hero-title-sub">大阪大谷大学 学生企画</span>
+          ゆるくつながるプロジェクト
+        </h1>
+        <!-- class="text-reveal" をつけた文章は、1文字ずつふわっと出てきます（common.js） -->
+        <p class="hero-catch text-reveal">世代も、暮らす場所も違う人たちが、<br>河南町の小さなスペースで、<br>ゆるくつながる時間を。</p>
+      </div>
+
+      <!-- 下にスクロールできることを伝える印 -->
+      <a href="#about" class="scroll-down" aria-label="下へスクロール">
+        <span>SCROLL</span>
+      </a>
+    </section>
+
+    <!-- ===================== お知らせ ===================== -->
+    <!-- 中身は data/site-data.js の NEWS から、js/top.js が自動で作ります -->
+    <section class="news" aria-label="お知らせ">
+      <div class="container">
+        <div class="news-box fade-in">
+          <p class="news-title">お知らせ</p>
+          <ul class="news-list" id="news-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== プロジェクトについて ===================== -->
+    <section class="section about" id="about">
+      <div class="container">
+        <!-- 見出しは「英字ラベル」＋「日本語の見出し」のセット（全ページ共通） -->
+        <h2 class="section-title fade-in">
+          <span class="section-en">ABOUT</span>
+          <span class="title-deco">プロジェクトについて</span>
+        </h2>
+
+        <!-- プロジェクトの紹介文 -->
+        <div class="about-lead">
+          <!-- 日本語の文は、HTMLの中で改行するとそこに「すき間」ができるので、1段落を1行で書いています -->
+          <p class="text-reveal">ゆるくつながるプロジェクトは、大阪大谷大学の学生が、河南町・寛弘寺の「くつろぎ自由研究室」で行っている居場所づくりのプロジェクトです。</p>
+          <p class="text-reveal">モーニングを食べたり、ヨガをしたり、SNSを学んだり、子どもたちが放課後に集まったり。世代も、住んでいる場所も違う人たちが、同じ場所でゆるくつながる時間を大切にしています。</p>
+        </div>
+
+        <!-- 「つながる」にこめた4つの意味 -->
+        <!-- <span> で区切った部分は、スマホで折り返すときも途中で切れません（top.css の .about-sub span） -->
+        <h3 class="about-sub text-reveal"><span>「ゆるくつながる」に込めた、</span><span>4つの意味</span></h3>
+        <!-- ロゴのくらげと同じ、線で描いた小さなくらげ（SVG） -->
+        <p class="about-jelly fade-in">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M8 26 C8 12 18 6 26 6 C36 6 42 14 42 24 C38 26 34 25 30 27 C24 30 16 30 8 26 Z"/>
+            <path d="M14 29 C14 35 10 37 12 42 M21 30 C21 36 25 38 22 44 M28 29 C29 35 33 36 31 42 M35 27 C37 32 40 33 39 37"/>
+            <circle cx="20" cy="18" r="1.6"/><circle cx="27" cy="18" r="1.6"/>
+          </svg>
+          くらげのように、ゆるくつながる
+        </p>
+
+        <!-- 「つながる」の4つの意味。チラシの「色つきの丸＋見出し」の形 -->
+        <ul class="tsunagaru-list">
+          <li class="tsunagaru-item fade-in" style="--dot: #3D7056;">
+            <h3><span class="dot"></span>人と人がつながる</h3>
+            <p>参加者同士、世代をこえて。</p>
+          </li>
+          <li class="tsunagaru-item fade-in" style="--dot: #609F85;">
+            <h3><span class="dot"></span>自分とつながる</h3>
+            <p>ヨガで、自分の体と心に向き合う時間。</p>
+          </li>
+          <li class="tsunagaru-item fade-in" style="--dot: #B27F4F;">
+            <h3><span class="dot"></span>地域とつながる</h3>
+            <p>河南町の人や場所、SNSの発信を通して。</p>
+          </li>
+          <li class="tsunagaru-item fade-in" style="--dot: #C28F31;">
+            <h3><span class="dot"></span>めぐりがつながる</h3>
+            <p>生ゴミ → 堆肥 → 野菜 → 食卓の循環。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== 数字で見る活動 ===================== -->
+    <!-- 数字は data/site-data.js の STATS から。画面に入るとカウントアップします -->
+    <section class="section numbers" id="numbers">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">NUMBERS</span>
+          <span class="title-deco">数字で見る活動</span>
+        </h2>
+        <ul class="stats-list" id="stats-list"></ul>
+        <p class="stats-note fade-in" id="stats-note"></p>
+      </div>
+    </section>
+
+    <!-- ===================== 今後の開催予定（チラシの裏面） ===================== -->
+    <!-- 左：今後の日程の一覧（ピル型の枠）／右：直近3件のカード
+         どちらも data/schedule.js から js/top.js が自動で作ります -->
+    <section class="section upcoming" id="upcoming">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">SCHEDULE</span>
+          <span class="title-deco">今後の開催予定</span>
+        </h2>
+
+        <div class="board">
+          <!-- 左側：チラシの「SCHEDULE」の縦長の枠 -->
+          <aside class="schedule-pill fade-in" aria-label="今後の日程一覧">
+            <div class="schedule-pill-inner">
+              <!-- 弧を描いた「SCHEDULE」の文字（SVGの textPath という機能） -->
+              <svg class="arc-title" viewBox="0 0 200 70" aria-hidden="true">
+                <path id="arc" d="M20 64 A100 100 0 0 1 180 64" fill="none"/>
+                <text><textPath href="#arc" startOffset="50%" text-anchor="middle">SCHEDULE</textPath></text>
+              </svg>
+              <!-- カレンダーのアイコン -->
+              <svg class="calendar-icon" viewBox="0 0 64 64" aria-hidden="true">
+                <rect x="8" y="12" width="48" height="44" rx="8"/>
+                <path d="M8 24h48M20 6v12M44 6v12"/>
+                <circle cx="40" cy="42" r="10" fill="#FFF8EC"/>
+                <path d="M40 36v6l4 3"/>
+              </svg>
+              <div class="schedule-mini" id="schedule-mini"></div>
+              <!-- くつろぎ自由研究室の外観（チラシで建物の絵があった場所） -->
+              <img class="pill-photo" src="images/kutsurogi-exterior.jpg" alt="くつろぎ自由研究室の外観。角地に建つ古い薬局の建物で、窓に「くつろぎ自由研究室」の木の看板" loading="lazy">
+              <p class="pill-place">
+                <strong>くつろぎ自由研究室</strong>
+                <span>大阪府南河内郡河南町<br>寛弘寺 422-7</span>
+              </p>
+              <a href="access.html" class="pill-link">アクセスを見る →</a>
+            </div>
+          </aside>
+
+          <!-- 右側：直近3件のくわしいカード -->
+          <div class="event-cards" id="upcoming-list"></div>
+        </div>
+
+        <div class="section-more fade-in">
+          <a href="schedule.html" class="btn btn-outline">すべての予定を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4つの企画 ===================== -->
+    <section class="section programs" id="programs">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">CONTENTS</span>
+          <span class="title-deco">4つの企画</span>
+        </h2>
+
+        <div class="program-cards">
+          <!-- カード1枚が <a> まるごとなので、どこを押しても詳細ページへ行けます。
+               style="--dot: 色" で、チラシと同じ丸の色を指定しています -->
+          <a href="program-morning.html" class="program-card card fade-in" style="--dot: #503535;">
+            <!-- style="object-position: …" で、写真のどのあたりを見せるかを調整しています -->
+            <img class="program-photo" src="images/morning-1.jpg" alt="お盆にのった生わさびご飯と、お味噌汁、お茶のモーニング" loading="lazy" style="object-position: center 66%;">
+            <div class="program-body">
+              <p class="program-en">MORNING &amp; COMPOST</p>
+              <h3><span class="dot"></span>生わさびご飯モーニング＆<br>はじめてのコンポスト講座</h3>
+              <p>すりおろしたての本わさびでいただく朝ごはんと、生ごみを堆肥に変えるコンポストの始め方。</p>
+              <span class="program-link">くわしく見る</span>
+            </div>
+          </a>
+
+          <a href="program-sns.html" class="program-card card fade-in" style="--dot: #B27F4F;">
+            <img class="program-photo" src="images/sns-1.jpg" alt="くつろぎ自由研究室で、テーブルを囲んで話す参加者たち" loading="lazy" style="object-position: center 68%;">
+            <div class="program-body">
+              <p class="program-en">SNS</p>
+              <h3><span class="dot"></span>地域コミュニティ×<br>SNS活用講座（全5回）</h3>
+              <p>発信・投稿のコツを学ぶ講座。講座のあとはランチ＆フリータイムです。</p>
+              <span class="program-link">くわしく見る</span>
+            </div>
+          </a>
+
+          <a href="program-yoga.html" class="program-card card fade-in" style="--dot: #609F85;">
+            <img class="program-photo" src="images/yoga-3.jpg" alt="くつろぎヨガ教室で、手を合わせて木のポーズをする講師と参加者" loading="lazy" style="object-position: center 45%;">
+            <div class="program-body">
+              <p class="program-en">YOGA</p>
+              <h3><span class="dot"></span>くつろぎヨガ教室（全4回）</h3>
+              <p>難しいポーズはなく、椅子に座ったままでも参加できます。呼吸に集中しながら、ゆっくり体をほぐします。</p>
+              <span class="program-link">くわしく見る</span>
+            </div>
+          </a>
+
+          <a href="program-ikoya.html" class="program-card card fade-in" style="--dot: #C28F31;">
+            <img class="program-photo" src="images/hero.jpg" alt="くつろぎ自由研究室の中のようす" loading="lazy" style="object-position: center 55%;">
+            <div class="program-body">
+              <p class="program-en">AFTER SCHOOL</p>
+              <h3><span class="dot"></span>放課後いこーや</h3>
+              <p>宿題をしてもいい、おしゃべりしてもいい、子どもたちの居場所。宿題は大学生スタッフがサポートします。</p>
+              <span class="program-link">くわしく見る</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 参加者の声 ===================== -->
+    <!-- data/site-data.js の VOICES から3件表示（アンケートの自由記述より） -->
+    <section class="section voices" id="voices">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">VOICES</span>
+          <span class="title-deco">参加者の声</span>
+        </h2>
+        <ul class="voice-list" id="voice-list"></ul>
+        <div class="section-more fade-in">
+          <a href="report.html" class="btn btn-mint">活動報告を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Instagram ===================== -->
+    <!-- data/instagram.js の投稿URLを、Instagram公式の埋め込みで表示します -->
+    <section class="section instagram" id="instagram">
+      <div class="container">
+        <h2 class="section-title fade-in">
+          <span class="section-en">INSTAGRAM</span>
+          <span class="title-deco">Instagramの最新投稿</span>
+        </h2>
+        <p class="insta-lead fade-in">
+          活動のようすは Instagram
+          <a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk</a>
+          で発信しています。
+        </p>
+        <div class="insta-feed" id="insta-feed"></div>
+        <div class="section-more fade-in">
+          <a href="https://www.instagram.com/mogumzk/" class="btn btn-primary" target="_blank" rel="noopener">Instagramをフォローする</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== フッター（全ページ共通） =====================
+       上の段：チラシの一番下と同じ、ミント色のお問い合わせ帯
+       下の段：チョコ色のサイト情報 -->
+  <footer class="site-footer">
+    <div class="footer-contact-band">
+      <div class="container contact-band-inner">
+        <p class="contact-band-title">お問い合わせ</p>
+        <ul class="contact-band-list">
+          <li><span>Instagram</span><a href="https://www.instagram.com/mogumzk/" target="_blank" rel="noopener">@mogumzk（DM）</a></li>
+          <!-- mailto: のリンクを押すと、メールアプリが開きます -->
+          <li><span>メール</span><a href="mailto:u3123042@osaka-ohtani.ac.jp">u3123042@osaka-ohtani.ac.jp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-inner">
+        <div class="footer-about">
+          <img class="footer-logo" src="images/logo.png" alt="ゆるくつながるプロジェクト" width="120" height="105">
+          <p>大阪大谷大学 学生企画<br>
+             ゆるくつながるプロジェクト<br>
+             会場：くつろぎ自由研究室<br>
+             大阪府南河内郡河南町寛弘寺422-7</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <p class="footer-head">MENU</p>
+          <ul>
+            <li><a href="schedule.html">開催スケジュール</a></li>
+            <li><a href="instructors.html">講師紹介</a></li>
+            <li><a href="report.html">活動報告</a></li>
+            <li><a href="first-time.html">初めての方へ</a></li>
+            <li><a href="access.html">アクセス</a></li>
+            <li><a href="faq.html">よくある質問</a></li>
+            <li><a href="about.html">運営について</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- © の年は js/common.js が自動で今年にします -->
+      <p class="copyright">&copy; <span id="year">2026</span> ゆるくつながるプロジェクト</p>
+    </div>
+  </footer>
+
+  <!--
+    JavaScriptの読み込み。順番が大切です！
+    ① data/ のデータ → ② common.js（全ページ共通の動き）→ ③ top.js（このページの動き）
+    データを先に読み込まないと、top.js がデータを見つけられません。
+  -->
+  <script src="data/schedule.js"></script>
+  <script src="data/site-data.js"></script>
+  <script src="data/instagram.js"></script>
+  <script src="data/sheet-config.js"></script>
+  <script src="js/common.js"></script>
+  <!-- シートから数字と声を読みこんでから、top.js を動かす -->
+  <script src="js/sheet-data.js" data-then="js/top.js"></script>
+</body>
+</html>
