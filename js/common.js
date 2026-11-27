@@ -198,13 +198,20 @@ function formatDate(dateText, withYear = false) {
 
 // 申込状況を決める。日付が過ぎていたら自動で「開催済み」
 function getStatus(event) {
-  if (parseDate(event.date) < today()) return "開催済み";
+  if (parseDate(event.date) < today()) {
+    // 終わった回でも、data で「満員」にしていた回は「満員で開催」と表示する
+    return event.status === "満員" ? "満員で開催" : "開催済み";
+  }
   return event.status;
+}
+// 終わった回かどうか（「開催済み」も「満員で開催」も、終わった回）
+function isPast(event) {
+  return parseDate(event.date) < today();
 }
 
 // 申込状況に合わせた、バッジのHTMLを作る
 function statusBadge(status) {
-  const cls = { "受付中": "status-open", "満員": "status-full", "開催済み": "status-done", "申込不要": "status-free" }[status] || "status-open";
+  const cls = { "受付中": "status-open", "満員": "status-full", "開催済み": "status-done", "満員で開催": "status-done", "申込不要": "status-free" }[status] || "status-open";
   return `<span class="status ${cls}">${status}</span>`;
 }
 
@@ -214,7 +221,7 @@ function applyButtons(event) {
   if (status === "満員") {
     return `<span class="btn btn-small btn-disabled" aria-disabled="true">満員のため受付終了</span>`;
   }
-  if (status === "開催済み") {
+  if (isPast(event)) {
     return `<span class="btn btn-small btn-disabled" aria-disabled="true">開催済み</span>`;
   }
   if (status === "申込不要") {

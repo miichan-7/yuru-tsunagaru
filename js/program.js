@@ -31,7 +31,7 @@ if (programSchedule && typeof SCHEDULE !== "undefined") {
       ${events.map((ev) => {
         const d = formatDate(ev.date, true);
         const status = getStatus(ev);
-        const past = status === "開催済み" ? " is-past" : "";
+        const past = isPast(ev) ? " is-past" : "";
         return `
           <li class="date-row card fade-in${past}">
             <p class="date-row-date">${d.text}<small>（${d.week}）</small></p>
@@ -71,7 +71,7 @@ if (programRounds && typeof SCHEDULE !== "undefined") {
     const theme = match ? match[2] : ev.title;
     const d = formatDate(ev.date);
     const status = getStatus(ev);
-    const past = status === "開催済み" ? " is-past" : "";
+    const past = isPast(ev) ? " is-past" : "";
 
     return `
       <li class="round-card card fade-in${past}">

@@ -95,7 +95,7 @@ if (statsList && typeof STATS !== "undefined") {
 
 /* ----------------------------------------------------------
    4. 今後の開催予定（チラシの裏面）
-   ・左の枠 … 今日以降の予定を、月ごとに短く一覧
+   ・左の枠 … これまでの回もふくめた全部の予定を、月ごとに短く一覧
    ・右のカード … 直近の3件をくわしく
    ---------------------------------------------------------- */
 const upcomingList = document.getElementById("upcoming-list");
@@ -143,8 +143,10 @@ if (upcomingList && typeof SCHEDULE !== "undefined") {
     };
 
     // 月ごとにグループ分けする（例：{ "2026-12": [予定, 予定], ... }）
+    // これまでの回も入れて、全部の予定を日付順に並べる
+    const allEvents = [...SCHEDULE].sort((a, b) => parseDate(a.date) - parseDate(b.date));
     const byMonth = {};
-    futureEvents.forEach((ev) => {
+    allEvents.forEach((ev) => {
       const key = ev.date.slice(0, 7); // "2026-12-05" の先頭7文字 → "2026-12"
       (byMonth[key] = byMonth[key] || []).push(ev);
     });
@@ -154,10 +156,14 @@ if (upcomingList && typeof SCHEDULE !== "undefined") {
         ${events.map((ev) => {
           const date = parseDate(ev.date);
           const d = formatDate(ev.date);
-          const full = getStatus(ev) === "満員" ? " is-full" : "";
-          return `<div class="mini-row${full}">
+          const status = getStatus(ev);
+          const full = status === "満員" ? " is-full" : "";
+          const past = isPast(ev) ? " is-past" : "";
+          // 終わった回には「開催済み」か「満員で開催」の小さな札をつける
+          const tag = past ? `<span class="mini-tag">${status}</span>` : "";
+          return `<div class="mini-row${full}${past}">
                     <span class="mini-date">${date.getMonth() + 1}/${date.getDate()}（${d.week}）</span>
-                    <span>${shortLabel(ev)}${full ? "（満員）" : ""}</span>
+                    <span>${shortLabel(ev)}${full ? "（満員）" : ""}${tag}</span>
                   </div>`;
         }).join("")}
       </div>

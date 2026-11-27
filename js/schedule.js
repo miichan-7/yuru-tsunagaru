@@ -17,7 +17,7 @@ const showPastCheckbox = document.getElementById("show-past");
 
 // いまの表示条件を覚えておく箱
 let currentFilter = "all";   // どの企画を表示するか
-let showPast = false;        // 開催済みも表示するか
+let showPast = true;         // 開催済みも表示するか（最初から表示する）
 
 
 /* ----------------------------------------------------------
@@ -28,7 +28,7 @@ function eventCardHtml(ev) {
   const d = formatDate(ev.date);
   const status = getStatus(ev);
   // 開催済みの回には、うすく表示するためのクラスをつける
-  const pastClass = status === "開催済み" ? " is-past" : "";
+  const pastClass = isPast(ev) ? " is-past" : "";
 
   return `
     <article class="schedule-card card${pastClass}" id="ev-${ev.date}" style="--dot: ${program.color};">
@@ -67,7 +67,7 @@ function renderSchedule() {
   // ① 表示する予定だけを残す
   const events = SCHEDULE
     .filter((ev) => currentFilter === "all" || ev.program === currentFilter)
-    .filter((ev) => showPast || getStatus(ev) !== "開催済み")
+    .filter((ev) => showPast || !isPast(ev))
     .sort((a, b) => parseDate(a.date) - parseDate(b.date)); // 日付の早い順
 
   // ② 1件もなかったとき
@@ -172,7 +172,7 @@ function renderCalendar() {
       // 開催日：企画の色の丸。押せるように <button> にする
       const ev = events[0];
       const program = PROGRAMS[ev.program];
-      const past = getStatus(ev) === "開催済み" ? " is-past" : "";
+      const past = isPast(ev) ? " is-past" : "";
       const label = `${month + 1}月${day}日 ${events.map((e) => PROGRAMS[e.program].short).join("、")}（${getStatus(ev)}）`;
       html += `<button type="button" class="cal-day has-event${past}${isToday}" data-date="${dateText}"
                  style="--dot: ${program.color};" aria-label="${label}" title="${label}">${day}</button>`;
@@ -207,7 +207,7 @@ calDays.addEventListener("click", (e) => {
   if (currentFilter !== "all" && currentFilter !== ev.program) {
     document.querySelector('.filter-btn[data-filter="all"]').click();
   }
-  if (getStatus(ev) === "開催済み" && !showPast) {
+  if (isPast(ev) && !showPast) {
     showPastCheckbox.checked = true;
     showPast = true;
     renderSchedule();

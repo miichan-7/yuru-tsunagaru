@@ -380,6 +380,20 @@
 .mini-row { display: flex; gap: 6px; }
 .mini-date { flex-shrink: 0; width: 5.8em; }
 .mini-row.is-full { opacity: .55; }   /* 満員の回はうすく */
+.mini-row.is-past { opacity: .5; }    /* 終わった回もうすく */
+/* 終わった回の「開催済み」「満員で開催」の小さな札 */
+.mini-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--choco);
+  color: var(--cream);
+  font-size: .68rem;
+  line-height: 1.6;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
 
 .pill-photo {
   width: 100%;
