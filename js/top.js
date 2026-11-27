@@ -124,7 +124,6 @@ if (upcomingList && typeof SCHEDULE !== "undefined") {
           </div>
           <dl class="event-info">
             <div><dt>日時：</dt><dd><span class="date-big">${d.text}（${d.week}）</span> ${ev.time}</dd></div>
-            <div><dt>参加費：</dt><dd>${feeHtml(ev.fee)}</dd></div>
             <div><dt>状況：</dt><dd>${statusBadge(getStatus(ev))}</dd></div>
           </dl>
           <div class="event-actions">${applyButtons(ev)}</div>

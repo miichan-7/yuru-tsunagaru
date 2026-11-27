@@ -45,7 +45,6 @@ function eventCardHtml(ev) {
         <dl class="schedule-info">
           <div><dt>時間：</dt><dd>${ev.time}</dd></div>
           <div><dt>場所：</dt><dd>くつろぎ自由研究室</dd></div>
-          <div><dt>参加費：</dt><dd>${feeHtml(ev.fee)}</dd></div>
         </dl>
         <a class="schedule-more" href="${program.page}">この企画について →</a>
       </div>
