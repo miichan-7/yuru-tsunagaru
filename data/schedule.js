@@ -131,7 +131,7 @@ const SCHEDULE = [
     title: "SNS活用講座 第5回「イベント開催に向けた作戦会議」",
     time: "10:00〜12:00 講座／12:00〜14:00 ランチ＆フリータイム",
     fee: "",
-    status: "受付中",
+    status: "満員",
     forms: [{ label: "申し込む", url: FORMS.sns }],
   },
 
