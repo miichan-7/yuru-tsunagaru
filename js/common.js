@@ -231,6 +231,6 @@ function applyButtons(event) {
 
 // 参加費の表示。「無料」の文字だけ、チラシと同じからし色にする
 function feeHtml(fee) {
-  // 「無料」の部分だけを緑の文字にする（「受講料無料・ランチ代3,000円」なら「受講料無料」だけが緑）
+  // 「無料」の部分だけを緑の文字にする
   return fee.replace(/(受講料)?無料/, (m) => `<span class="fee-free">${m}</span>`);
 }
